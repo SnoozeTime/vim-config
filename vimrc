@@ -24,6 +24,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax' 
 Plugin 'vimwiki/vimwiki'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
