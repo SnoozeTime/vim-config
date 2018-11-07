@@ -25,6 +25,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax' 
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -160,7 +161,7 @@ set writebackup
 if $TERM == "xterm-256color"
 	  set t_Co=256
 endif
-colorscheme badwolf
+colorscheme zenburn
 
 if has('python3')
    let g:gundo_prefer_python3 = 1
@@ -203,4 +204,10 @@ EOF
 " ------------------
 let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
+" Set the current dir. Useful when some plugin are using autochangedir >>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
+
+" For yaml
+au BufRead, BufNewFile *.yaml, *.yml    set filetype=yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
