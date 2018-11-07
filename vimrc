@@ -158,10 +158,11 @@ set writebackup
 " ---------------------------------------------------------------------
 "  Appearance
 " ---------------------------------------------------------------------
-if $TERM == "xterm-256color"
-	  set t_Co=256
-endif
+set t_Co=256
+" set background=dark
 colorscheme zenburn
+highlight Normal ctermbg=None
+
 
 if has('python3')
    let g:gundo_prefer_python3 = 1
@@ -211,3 +212,6 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " For yaml
 au BufRead, BufNewFile *.yaml, *.yml    set filetype=yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" no spell check in vim wiki files...
+au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  *.md set nospell
