@@ -215,3 +215,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " no spell check in vim wiki files...
 au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  *.md set nospell
+
+" heigh of preview window (git status)
+set previewheight=20
