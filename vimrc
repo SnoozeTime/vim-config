@@ -25,7 +25,13 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax' 
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
 Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'tomlion/vim-solidity'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -213,8 +219,9 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 au BufRead, BufNewFile *.yaml, *.yml    set filetype=yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" no spell check in vim wiki files...
-au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  *.md set nospell
+autocmd FileType vimwiki setlocal nospell
+
 
 " heigh of preview window (git status)
 set previewheight=20
+
