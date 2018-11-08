@@ -31,8 +31,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'tomlion/vim-solidity'
 
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -127,7 +125,7 @@ let mapleader="," " leader is comma instead of \
 nnoremap <leader>u :GundoToggle<CR>
 
 " edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " open ag.vim
@@ -179,10 +177,7 @@ endif
 map <C-n> :NERDTreeToggle<CR>
 set encoding=utf-8
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoTo<CR>
-nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
 
 
 " pep8 indentation
@@ -225,3 +220,8 @@ autocmd FileType vimwiki setlocal nospell
 " heigh of preview window (git status)
 set previewheight=20
 
+nnoremap <leader>gg :Gstatus<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gf :Gpull<CR>
+nnoremap <leader>gc :Gcommit<CR>
