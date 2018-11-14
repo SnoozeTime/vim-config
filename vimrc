@@ -205,7 +205,10 @@ EOF
 " Vim wiki settings
 " ------------------
 let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
+au FileType vimwiki set syntax=pandoc
+let g:pandoc#syntax#codeblocks#embeds#langs = ['cpp', 'python', 'rust']
+let g:pandoc#syntax#conceal#use = 1
+let g:pandoc#syntax#conceal#urls = 1
 " Set the current dir. Useful when some plugin are using autochangedir >>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
