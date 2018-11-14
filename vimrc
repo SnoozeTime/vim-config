@@ -225,3 +225,7 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gf :Gpull<CR>
 nnoremap <leader>gc :Gcommit<CR>
+
+
+" meh
+let g:go_version_warning = 0
