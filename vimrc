@@ -8,7 +8,6 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 Plugin 'valloric/youcompleteme'
 Plugin 'rking/ag.vim'
-Plugin 'sjl/gundo.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Bundle 'mattn/calendar-vim'
@@ -25,11 +24,18 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax' 
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
 Plugin 'fatih/vim-go'
+
+" Rust
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
+
+" Blockchain stuff
 Plugin 'tomlion/vim-solidity'
+
+" Web dev
+Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,6 +63,11 @@ set hidden
 set tabstop=4
 set softtabstop=4 " when editing
 set expandtab " tabs are spaces
+
+" Indentation
+" ------------
+set smarttab
+set cindent
 
 " UI config
 " ---------
@@ -209,6 +220,7 @@ au FileType vimwiki set syntax=pandoc
 let g:pandoc#syntax#codeblocks#embeds#langs = ['cpp', 'python', 'rust']
 let g:pandoc#syntax#conceal#use = 1
 let g:pandoc#syntax#conceal#urls = 1
+let g:vimwiki_auto_chdir = 0
 " Set the current dir. Useful when some plugin are using autochangedir >>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -216,6 +228,7 @@ nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 " For yaml
 au BufRead, BufNewFile *.yaml, *.yml    set filetype=yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType vimwiki setlocal nospell
 
@@ -229,6 +242,12 @@ nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gf :Gpull<CR>
 nnoremap <leader>gc :Gcommit<CR>
 
-
 " meh
 let g:go_version_warning = 0
+nnoremap <leader>cc :Calendar<CR>
+
+" Share clipboard.
+set clipboard=unnamedplus
+
+" Javscript
+autocmd FileType javascript setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
