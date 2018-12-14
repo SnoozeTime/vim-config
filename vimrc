@@ -29,6 +29,7 @@ Plugin 'fatih/vim-go'
 " Rust
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'timonv/vim-cargo'
 
 " Blockchain stuff
 Plugin 'tomlion/vim-solidity'
@@ -36,6 +37,7 @@ Plugin 'tomlion/vim-solidity'
 " Web dev
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -251,3 +253,8 @@ set clipboard=unnamedplus
 
 " Javscript
 autocmd FileType javascript setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
+au BufRead, BufNewFile *.vue set filetype=vue
+autocmd FileType vue setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
+
+" For compiling on Rust
+autocmd FileType rust nnoremap <leader>cb :CargoBuild<CR>
