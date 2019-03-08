@@ -12,10 +12,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Bundle 'mattn/calendar-vim'
 
-" smart fold
-Plugin 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1
-
 " smart indent
 Plugin 'vim-scripts/indentpython.vim'
 
@@ -38,6 +34,17 @@ Plugin 'tomlion/vim-solidity'
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
+
+" Unity and C#
+Bundle 'OmniSharp/omnisharp-vim'
+Plugin 'tikhomirov/vim-glsl'
+
+Plugin 'hashivim/vim-terraform'
+Plugin 'leafgarland/typescript-vim'
+
+Plugin 'chr4/nginx.vim'
+
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,7 +142,6 @@ set cmdheight=2
 " Map leader modif
 " -----------------
 let mapleader="," " leader is comma instead of \
-nnoremap <leader>u :GundoToggle<CR>
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :e $MYVIMRC<CR>
@@ -253,8 +259,75 @@ set clipboard=unnamedplus
 
 " Javscript
 autocmd FileType javascript setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
+autocmd FileType typescript setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
 au BufRead, BufNewFile *.vue set filetype=vue
 autocmd FileType vue setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
 
 " For compiling on Rust
 autocmd FileType rust nnoremap <leader>cb :CargoBuild<CR>
+
+let g:OmniSharp_server_use_mono = 1
+" Set the type lookup function to use the preview window instead of echoing it
+
+"let g:OmniSharp_typeLookupInPreview = 1
+
+
+" Timeout in seconds to wait for a response from the server
+let g:OmniSharp_timeout = 5
+
+" Don't autoselect first omnicomplete option, show options even if there is only
+" one (so the preview documentation is accessible). Remove 'preview' if you
+" don't want to see any documentation whatsoever.
+set completeopt=longest,menuone,preview
+
+" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" Fetch semantic type/interface/identifier names on BufEnter and highlight them
+let g:OmniSharp_highlight_types = 1
+
+
+augroup omnisharp_commands
+    autocmd!
+
+    " When Syntastic is available but not ALE, automatic syntax check on events
+    " (TextChanged requires Vim 7.4)
+    " autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
+
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " Update the highlighting whenever leaving insert mode
+    autocmd InsertLeave *.cs call OmniSharp#HighlightBuffer()
+
+    " Alternatively, use a mapping to refresh highlighting for the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>th :OmniSharpHighlightTypes<CR>
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+augroup END
+
+" TerraforM (infra as code)
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+
+
