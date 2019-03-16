@@ -26,6 +26,7 @@ Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'timonv/vim-cargo'
+Plugin 'racer-rust/vim-racer'
 
 " Blockchain stuff
 Plugin 'tomlion/vim-solidity'
@@ -261,8 +262,18 @@ autocmd FileType typescript setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
 au BufRead, BufNewFile *.vue set filetype=vue
 autocmd FileType vue setlocal tabstop=4 sts=4 sw=4 expandtab autoindent
 
-" For compiling on Rust
+" ----------------------------------------------------------
+" RUST CONFIG
+" ----------------------------------------------------------
+
+" Compile from vim
 autocmd FileType rust nnoremap <leader>cb :CargoBuild<CR>
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 let g:OmniSharp_server_use_mono = 1
 " Set the type lookup function to use the preview window instead of echoing it
