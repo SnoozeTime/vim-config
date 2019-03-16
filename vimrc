@@ -44,8 +44,6 @@ Plugin 'leafgarland/typescript-vim'
 
 Plugin 'chr4/nginx.vim'
 
-
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -182,7 +180,7 @@ set writebackup
 "  Appearance
 " ---------------------------------------------------------------------
 set t_Co=256
-" set background=dark
+set background=dark
 colorscheme zenburn
 highlight Normal ctermbg=None
 
@@ -330,4 +328,11 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 
+" FOR c# in unity
+autocmd FileType cs setlocal ts=4 sts=4 sw=4 expandtab
+
+autocmd! BufNewFile,BufRead *.vert,*.frag,*.vs,*.fs set ft=glsl
+
+" FORMAT JSON ! YAY
+nnoremap <leader>js :%! python3 -m json.tool<CR>
 
