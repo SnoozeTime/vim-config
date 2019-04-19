@@ -45,6 +45,9 @@ Plugin 'leafgarland/typescript-vim'
 
 Plugin 'chr4/nginx.vim'
 
+" Kotlin not so bad
+Plugin 'udalov/kotlin-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -222,7 +225,7 @@ EOF
 
 " Vim wiki settings
 " ------------------
-let g:vimwiki_list = [{'path': '~/Nextcloud/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '/mnt/c/Users/Linus/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 au FileType vimwiki set syntax=pandoc
 let g:pandoc#syntax#codeblocks#embeds#langs = ['cpp', 'python', 'rust']
 let g:pandoc#syntax#conceal#use = 1
