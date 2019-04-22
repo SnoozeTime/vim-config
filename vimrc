@@ -225,7 +225,7 @@ EOF
 
 " Vim wiki settings
 " ------------------
-let g:vimwiki_list = [{'path': '/mnt/c/Users/Linus/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 au FileType vimwiki set syntax=pandoc
 let g:pandoc#syntax#codeblocks#embeds#langs = ['cpp', 'python', 'rust']
 let g:pandoc#syntax#conceal#use = 1
@@ -277,6 +277,9 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+" Autoformat rust on save
+let g:rustfmt_autosave = 1
 
 let g:OmniSharp_server_use_mono = 1
 " Set the type lookup function to use the preview window instead of echoing it
